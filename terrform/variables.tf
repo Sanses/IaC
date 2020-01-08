@@ -17,3 +17,8 @@ variable "admin_password" {
     description = "Default password for admin"
     default = "1qazxsw23edC"
 }
+
+variable "codelabtag" {
+    description = "Default tag"
+    default = "codelab"
+}
