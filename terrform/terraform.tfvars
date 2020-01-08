@@ -1,1 +1,1 @@
-location = "koreasouth"
+codelabtag = "codelab2"
