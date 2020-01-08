@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "vmss" {
   location = var.location
 
   tags = {
-    environment = "codelab"
+    environment = var.codelabtag
   }
 }
 
