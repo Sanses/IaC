@@ -195,15 +195,6 @@ resource "azurerm_virtual_machine" "jumpbox" {
     admin_password = "Password1234!"
   }
 
-  os_profile_linux_config {
-    disable_password_authentication = true
-
-    ssh_keys {
-      path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = file("~/.ssh/id_rsa.pub")
-    }
-  }
-
   tags = {
     environment = "codelab"
   }
