@@ -32,10 +32,11 @@
   
         "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync",
         "wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh",
-        "echo '======================='",
+        "echo '==1======================='",
         "ls -rlth",       
-        "sleep 30",
-        "echo '======================= ===='",
+        "echo '==2======================='",
+        "touch aaa.txt"
+        "echo '==3======================='",
         "ls -rlth",
         "chmod 777 onboard_agent.sh",
         
