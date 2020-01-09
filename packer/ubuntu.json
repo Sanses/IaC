@@ -34,6 +34,9 @@
         "wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh",
         "echo '======================='",
         "ls -rlth",       
+        "sleep 30",
+        "echo '======================= ===='",
+        "ls -rlth",
         "chmod 777 onboard_agent.sh",
         
         "sh onboard_agent.sh -w 591c149d-9fdf-40f4-8fc3-60934a7c6e92 -s ADtnvnyQJWHIlzId+xbbz5nV52hG5Xxcx26Pr1ieM/lluSg3aqhEYyY5GHgoErS+xe6hWuDitK7apH8xeZWFYQ== -d opinsights.azure.com",
