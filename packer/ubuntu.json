@@ -36,7 +36,7 @@
         "echo '==1======================='",
         "ls -rlth",       
         "echo '==2======================='",
-        "touch aaa.txt"
+        "touch aaa.txt",
         "echo '==3======================='",
         "ls -rlth",
         "chmod 777 onboard_agent.sh",
