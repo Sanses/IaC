@@ -25,7 +25,7 @@
     }],
     "provisioners": [{
       "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
-      "execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}'",
+      "execute_command": "echo 'packer' | sudo -S env {{ .Vars }} {{ .Path }}",
       "inline": [
         "apt-get update",
         "apt-get upgrade -y",
