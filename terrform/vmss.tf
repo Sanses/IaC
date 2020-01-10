@@ -144,14 +144,6 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
     admin_password       = "Passwword1234"
   }
 
-  os_profile_linux_config {
-    disable_password_authentication = true
-
-    ssh_keys {
-      path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = file("~/.ssh/id_rsa.pub")
-    }
-  }
 
   network_profile {
     name    = "terraformnetworkprofile"
@@ -224,15 +216,6 @@ resource "azurerm_virtual_machine" "jumpbox" {
     computer_name  = "jumpbox"
     admin_username = "azureuser"
     admin_password = "Password1234!"
-  }
-
-  os_profile_linux_config {
-    disable_password_authentication = true
-
-    ssh_keys {
-      path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = file("~/.ssh/id_rsa.pub")
-    }
   }
 
   tags = {
