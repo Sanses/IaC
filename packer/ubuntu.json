@@ -30,7 +30,7 @@
         "apt-get upgrade -y",
         "apt-get -y install nginx",
   
-        "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync",
+        "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
       ],
       "inline_shebang": "/bin/sh -x",
       "type": "shell"
