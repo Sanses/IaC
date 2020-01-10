@@ -3,8 +3,29 @@ resource "azurerm_resource_group" "vmss" {
   location = var.location
 
   tags = {
-    environment = var.codelabtag
+    environment = "codelab"
   }
+}
+resource "azurerm_network_security_group" "vmssnsg" {
+    name                = "vmssnsg"
+    location            = var.location
+    resource_group_name = var.resource_group_name
+    
+    security_rule {
+        name                       = "https"
+        priority                   = 1001
+        direction                  = "Outbound"
+        access                     = "Allow"
+        protocol                   = "Tcp"
+        source_port_range          = "*"
+        destination_port_range     = "443"
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+    }
+
+    tags = {
+        environment = "codelab"
+    }
 }
 
 resource "azurerm_virtual_network" "vmss" {
@@ -22,6 +43,7 @@ resource "azurerm_subnet" "vmss" {
   name                 = "vmss-subnet"
   resource_group_name  = azurerm_resource_group.vmss.name
   virtual_network_name = azurerm_virtual_network.vmss.name
+  network_security_group_id = azurerm_network_security_group.vmssnsg.id
   address_prefix       = "10.0.2.0/24"
 }
 
@@ -122,6 +144,15 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
     admin_password       = "Passwword1234"
   }
 
+  os_profile_linux_config {
+    disable_password_authentication = true
+
+    ssh_keys {
+      path     = "/home/azureuser/.ssh/authorized_keys"
+      key_data = file("~/.ssh/id_rsa.pub")
+    }
+  }
+
   network_profile {
     name    = "terraformnetworkprofile"
     primary = true
@@ -193,6 +224,15 @@ resource "azurerm_virtual_machine" "jumpbox" {
     computer_name  = "jumpbox"
     admin_username = "azureuser"
     admin_password = "Password1234!"
+  }
+
+  os_profile_linux_config {
+    disable_password_authentication = true
+
+    ssh_keys {
+      path     = "/home/azureuser/.ssh/authorized_keys"
+      key_data = file("~/.ssh/id_rsa.pub")
+    }
   }
 
   tags = {
