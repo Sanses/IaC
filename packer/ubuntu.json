@@ -31,20 +31,26 @@
         "apt-get -y install nginx",
   
         "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync",
-        "wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh",
-        "echo '==1======================='",
-        "ls -rlth",       
-        "echo '==2======================='",
-        "touch aaa.txt",
-        "echo '==3======================='",
-        "ls -rlth",
-        "chmod 777 onboard_agent.sh",
-        
-        "sh onboard_agent.sh -w 591c149d-9fdf-40f4-8fc3-60934a7c6e92 -s ADtnvnyQJWHIlzId+xbbz5nV52hG5Xxcx26Pr1ieM/lluSg3aqhEYyY5GHgoErS+xe6hWuDitK7apH8xeZWFYQ== -d opinsights.azure.com",
-        "sudo /opt/microsoft/omsagent/bin/service_control restart 591c149d-9fdf-40f4-8fc3-60934a7c6e92"
-        
       ],
       "inline_shebang": "/bin/sh -x",
       "type": "shell"
-    }]
+    },
+    {
+        "type": "shell",
+        "pause_before": "5s",
+        "inline": [
+            "wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh",
+            "echo '==1======================='",
+            "ls -rlth",       
+            "echo '==2======================='",
+            "touch aaa.txt",
+            "echo '==3======================='",
+            "ls -rlth",
+            "chmod 777 onboard_agent.sh",
+
+            "sh onboard_agent.sh -w 591c149d-9fdf-40f4-8fc3-60934a7c6e92 -s ADtnvnyQJWHIlzId+xbbz5nV52hG5Xxcx26Pr1ieM/lluSg3aqhEYyY5GHgoErS+xe6hWuDitK7apH8xeZWFYQ== -d opinsights.azure.com",
+            "sudo /opt/microsoft/omsagent/bin/service_control restart 591c149d-9fdf-40f4-8fc3-60934a7c6e92"
+        ]
+      }                    
+    ]
   }
