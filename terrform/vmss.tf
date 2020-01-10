@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "vmss" {
 resource "azurerm_network_security_group" "vmss" {
     name                = "vmssnsg"
     location            = var.location
-    resource_group_name = var.resource_group_name
+    resource_group_name = azurerm_resource_group.vmss.name
     
     security_rule {
         name                       = "https"
