@@ -2,13 +2,13 @@
     "builders": [{
       "type": "azure-arm",
   
-      "client_id": "f7127095-ef78-4fe5-88a7-0d1224f4553e",
-      "client_secret": "18a19f5d-2bba-48b2-922d-2eaaa63eb229",
-      "tenant_id": "22921252-b61a-4ab3-ac9a-8f160db61f8d",
-      "subscription_id": "5d5077aa-4b46-4305-b5ac-8bc68eb1ae5e",
+      "client_id": "{{user `CLIENT_ID`}}",
+      "client_secret": "{{user `CLIENT_SECRET`}}",
+      "tenant_id": "{{user `TENANT_ID`}}",
+      "subscription_id": "{{user `SUBSCRIPTION_ID`}}",
   
-      "managed_image_resource_group_name": "myResourceGroup",
-      "managed_image_name": "myPackerImage",
+      "managed_image_resource_group_name": "{{user `RESOURCE_GROUP_NAME`}}",
+      "managed_image_name": "{{user `PACKER_IMAGE_NAME`}}",
   
       "os_type": "Linux",
       "image_publisher": "Canonical",
@@ -20,7 +20,7 @@
           "task": "Image deployment"
       },
   
-      "location": "koreacentral",
+      "location": "{{user `LOCATION`}}",
       "vm_size": "Standard_DS2_v2"
     }],
     "provisioners": [
@@ -29,16 +29,11 @@
         "pause_before": "5s",
         "inline": [
             "wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh",
-            "echo '==1======================='",
-            "ls -rlth",       
-            "echo '==2======================='",
-            "touch aaa.txt",
-            "echo '==3======================='",
-            "ls -rlth",
+
             "chmod 777 onboard_agent.sh",
 
-            "sh onboard_agent.sh -w 591c149d-9fdf-40f4-8fc3-60934a7c6e92 -s ADtnvnyQJWHIlzId+xbbz5nV52hG5Xxcx26Pr1ieM/lluSg3aqhEYyY5GHgoErS+xe6hWuDitK7apH8xeZWFYQ== -d opinsights.azure.com",
-            "sudo /opt/microsoft/omsagent/bin/service_control restart 591c149d-9fdf-40f4-8fc3-60934a7c6e92"
+            "sh onboard_agent.sh -w {{user `WORKSPACE_ID`}} -s {{user `PRIMARY_KEY`}} -d opinsights.azure.com",
+            "sudo /opt/microsoft/omsagent/bin/service_control restart {user `WORKSPACE_ID`}}"
         ]
       }                    
     ]
