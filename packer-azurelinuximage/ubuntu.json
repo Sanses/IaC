@@ -33,7 +33,7 @@
             "chmod 777 onboard_agent.sh",
 
             "sh onboard_agent.sh -w {{user `WORKSPACE_ID`}} -s {{user `PRIMARY_KEY`}} -d opinsights.azure.com",
-            "sudo /opt/microsoft/omsagent/bin/service_control restart {user `WORKSPACE_ID`}}"
+            "sudo /opt/microsoft/omsagent/bin/service_control restart {{user `WORKSPACE_ID`}}"
         ]
       }                    
     ]
