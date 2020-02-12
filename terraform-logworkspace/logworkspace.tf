@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "logworkspace" {
-  name     = "xLogWorkspaceRG"
+  name     = "sanseIAC"
   location = "koreacentral"
 }
 
