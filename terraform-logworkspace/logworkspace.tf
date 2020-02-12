@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "logworkspace" {
 }
 
 resource "azurerm_log_analytics_workspace" "logworkspace" {
-  name                = "sanselogwork"
+  name                = "sanselogworkspace"
   location            = "${azurerm_resource_group.logworkspace.location}"
   resource_group_name = "${azurerm_resource_group.logworkspace.name}"
   sku                 = "PerGB2018"
