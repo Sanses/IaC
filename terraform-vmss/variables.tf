@@ -18,7 +18,7 @@ variable "admin_password" {
     default = "1qazxsw23edC"
 }
 
-variable "packerimagename" {
+variable "packer_image_name" {
     description = "Default password for admin"
     default = "PackerImage"
 }
