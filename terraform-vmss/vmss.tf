@@ -104,11 +104,11 @@ resource "azurerm_lb_rule" "lbnatrule" {
 }
 
 data "azurerm_resource_group" "image" {
-  name = "myResourceGroup"
+  name = var.image_resource_group_name
 }
 
 data "azurerm_image" "image" {
-  name                = "myPackerImage"
+  name                = var.packer_iamge_name
   resource_group_name = data.azurerm_resource_group.image.name
 }
 
