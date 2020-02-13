@@ -18,7 +18,7 @@ variable "admin_password" {
     default = "1qazxsw23edC"
 }
 
-variable "iamge_resource_group_name" {
+variable "packer_resource_group_name" {
   description = "The name of the resource group in which the resources are created"
   default     = "sanseIAC"
 }
