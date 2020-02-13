@@ -18,6 +18,11 @@ variable "admin_password" {
     default = "1qazxsw23edC"
 }
 
+variable "packerimagename" {
+    description = "Default password for admin"
+    default = "PackerImage"
+}
+
 variable "codelabtag" {
     description = "Default tag"
     default = "codelab"
