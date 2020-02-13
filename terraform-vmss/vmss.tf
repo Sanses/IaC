@@ -104,7 +104,7 @@ resource "azurerm_lb_rule" "lbnatrule" {
 }
 
 data "azurerm_resource_group" "image" {
-  name = var.image_resource_group_name
+  name = var.packer_resource_group_name
 }
 
 data "azurerm_image" "image" {
@@ -145,7 +145,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
   os_profile {
     computer_name_prefix = "vmlab"
     admin_username       = "azureuser"
-    admin_password       = "Passwword1234"
+    admin_password       = var.admin_password
   }
 
 
