@@ -18,6 +18,11 @@ variable "admin_password" {
     default = "1qazxsw23edC"
 }
 
+variable "iamge_resource_group_name" {
+  description = "The name of the resource group in which the resources are created"
+  default     = "sanseIAC"
+}
+
 variable "packer_image_name" {
     description = "Default password for admin"
     default = "PackerImage"
